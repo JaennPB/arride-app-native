@@ -8,12 +8,14 @@ import MapScreen from './screens/MapScreen';
 import FoodScreen from './screens/FoodScreen';
 
 import store from './store/store';
+import { StatusBar } from 'react-native';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <Provider store={store}>
+      <StatusBar barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen

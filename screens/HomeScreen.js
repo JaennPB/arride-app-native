@@ -1,14 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, SafeAreaView, Image, View } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_MAPS_API_KEY } from '@env';
 
 import NavOptions from '../components/NavOptions';
 
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.homeScreenContainer}>
-      <View style={styles.logoContainer}>
-        <Image source={require('../assets/logo.png')} style={styles.logo} />
-      </View>
+      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <GooglePlacesAutocomplete
+        placeholder="Where are you at?"
+        styles={{
+          container: {
+            flex: 0,
+            marginVertical: 30,
+          },
+          textInput: {
+            fontSize: 18,
+          },
+        }}
+        query={{
+          key: GOOGLE_MAPS_API_KEY,
+          language: 'en',
+        }}
+        nearbyPlacesAPI="GooglePlacesSearch"
+        debounce={400}
+      />
       <NavOptions />
     </SafeAreaView>
   );
@@ -21,15 +39,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#2b303b',
     height: '100%',
     paddingHorizontal: 20,
-    paddingVertical: 40,
-  },
-  logoContainer: {
-    // width: '100%',
-    // alignItems: 'flex-end',
+    paddingVertical: 20,
   },
   logo: {
-    width: '50%',
-    height: 50,
-    resizeMode: 'contain',
+    width: '40%',
+    height: '10%',
+    resizeMode: 'center',
   },
 });

@@ -15,7 +15,5 @@ const styles = StyleSheet.create({
   foodScreen: {
     backgroundColor: '#2b303b',
     height: '100%',
-    paddingHorizontal: 20,
-    paddingVertical: 40,
   },
 });
